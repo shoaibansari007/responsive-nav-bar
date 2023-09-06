@@ -1,0 +1,124 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --clr-background: rgba(126, 60, 192, 0.6);
+}
+body{
+    background: #dadada;
+    font-family: 'Work Sans',sans-serif;
+    font-weight: 400;
+}
+header{
+    background: var(--clr-background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+}
+header h1{
+    margin: 10px 0;
+}
+header nav ul {
+    list-style: none;
+}
+header nav ul li{
+    margin-bottom: 1em;
+    margin-left: 1em;
+}
+header nav a{
+    text-decoration: none;
+    color: #fff;
+    opacity: 0;
+    
+}
+header nav a:hover{
+    color: #000;
+    font-weight: 600;
+}
+header nav{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--clr-background);
+    width: 100%;
+    list-style: none;
+    transform: scale(1,0);
+    transform-origin: top;
+    transition: transform 200ms ease-in-out;
+}
+.nav-chekbox:checked ~ nav{
+    transform: scale(1,1);
+    transition:  transform 400ms ease-in-out;
+}
+.nav-chekbox:checked ~ nav a{
+    opacity: 1;
+    transition: opacity 400ms ease-in-out 150ms;
+}
+.nav-chekbox{
+    display: none;
+}
+.nav-checkbox-label{
+    position: absolute;
+    left: 1em;
+}
+.nav-checkbox-label span,
+.nav-checkbox-label span::before,
+.nav-checkbox-label span::after{
+    content: '';
+    width: 20px;
+    height: 3px;
+    background: #fff;
+    position: relative;
+    display: block;
+    border-radius: 2px;
+}
+.nav-checkbox-label span::before,
+.nav-checkbox-label span::after{
+    position: absolute;
+}
+.nav-checkbox-label span::before{
+    top:7px ;
+}
+.nav-checkbox-label span::after{
+    bottom: 7px;
+}
+.nav-checkbox-label span:hover,
+.nav-checkbox-label span:hover::before,
+.nav-checkbox-label span:hover::after{
+    background: #000;
+}
+/* ------------------------------------------------------ */
+@media screen and (min-width: 800px) {
+    .nav-checkbox-label {
+        display: none;
+    }
+    
+    header{
+        display: grid;
+        grid-template-columns: 100px auto minmax(400px,2fr) 100px;
+    }
+    .logo{
+        grid-column: 2/3;
+    }
+    nav{
+        transform: scale(1,1) !important;
+        grid-column: 3/4;
+        top: 20px !important;
+        
+    }
+    nav ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        background: transparent;
+    }
+    nav li a{
+        font-size: 1.2em;
+        margin-left: 30px;
+        background-color: #fff;
+    }
+  }
